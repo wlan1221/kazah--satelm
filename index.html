@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Қытайдан өнімдер</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Қытайдан тікелей жеткізу</h1>
+    <nav>
+      <a href="#">Басты бет</a>
+      <a href="#products">Өнімдер</a>
+      <a href="#contact">Байланыс</a>
+    </nav>
+  </header>
+
+  <section id="intro">
+    <h2>Сіз үшін тиімді бағадағы өнімдер</h2>
+    <p>Біз Қытайдағы шағын зауыттардан күнделікті тұрмысқа қажет тауарларды тікелей жеткіземіз.</p>
+  </section>
+
+  <section id="products">
+    <h2>Біздің өнімдер</h2>
+    <div class="product-grid">
+
+      <div class="product-card">
+        <img src="https://via.placeholder.com/250x180" alt="Өнім 1">
+        <h3>Пластик қапшықтар</h3>
+        <p class="price">Бағасы: 200 ₸</p>
+        <a href="#" class="btn">Сатып алу</a>
+      </div>
+
+      <div class="product-card">
+        <img src="https://via.placeholder.com/250x180" alt="Өнім 2">
+        <h3>Қолғап (үй және өндіріс)</h3>
+        <p class="price">Бағасы: 500 ₸</p>
+        <a href="#" class="btn">Сатып алу</a>
+      </div>
+
+      <div class="product-card">
+        <img src="https://via.placeholder.com/250x180" alt="Өнім 3">
+        <h3>Балалар ойыншықтары</h3>
+        <p class="price">Бағасы: 1500 ₸</p>
+        <a href="#" class="btn">Сатып алу</a>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Бізбен хабарласыңыз</h2>
+    <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <label for="name">Аты-жөніңіз:</label><br>
+      <input type="text" id="name" name="name" required><br><br>
+
+      <label for="email">Email:</label><br>
+      <input type="email" id="email" name="_replyto" required><br><br>
+
+      <label for="message">Хабарламаңыз:</label><br>
+      <textarea id="message" name="message" rows="5" required></textarea><br><br>
+
+      <button type="submit" class="btn">Жіберу</button>
+    </form>
+    <p id="form-message" style="color:green; display:none; margin-top:10px;">Хабарлама жіберілді! Біз сізге тез арада жауап береміз.</p>
+  </section>
+
+  <footer>
+    <p>© 2025 Қытайдан жеткізу. Барлық құқықтар қорғалған.</p>
+  </footer>
+
+  <script>
+    const form = document.getElementById('contact-form');
+    const msg = document.getElementById('form-message');
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const data = new FormData(form);
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        msg.style.display = 'block';
+        form.reset();
+      } else {
+        alert("Қате шықты! Кейінірек қайталап көріңіз.");
+      }
+    });
+  </script>
+</body>
+</html>
